@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="shop.css">
+    <title>상점</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="common_img/header.svg" alt="Header">
+        </div>
+        <img src="common_img/nugget_text.svg" alt="Nugget Text" class="nugget-text">
+        <div class="bottom-bar">
+            <div class="icons">
+                <a href="dectionary.html">
+                    <img src="common_img/dectionaryicon.svg" alt="Dictionary Icon" class="dectionary-icon">
+                </a>
+                <a href="list.html">
+                    <img src="common_img/listicon.svg" alt="List Icon" class="list-icon">
+                </a>
+                <a href="main.html">
+                    <img src="common_img/mainicon.svg" alt="Main Icon" class="main-icon">
+                </a>
+                <a href="shop.html">
+                    <img src="common_img/shopicon.svg" alt="Shop Icon" class="shop-icon">
+                </a>
+                <a href="">
+                    <img src="common_img/mypageicon.svg" alt="My Page Icon" class="mypage-icon">
+                </a>
+            </div>
+            <div class="hide">
+                <a href="">
+                    <img src="shop_img/shopicon_full.svg" alt="Dectionary Full Icon" class="dectionary_full-icon">
+                </a>
+            </div>
+        </div>
+
+        <div class="title_bar">
+            <h1 class="title">상점</h1>
+            <img src="common_img/lefticon.svg" alt="Left Icon" class="left-icon">
+        </div>
+        <div class="all_dishs">
+            <div class="dishs">
+                <div class="dish">
+                    <img src="shop_img/shop_white_dish.svg" alt="white dish" class="dish-img">
+                    <div class="rectangle"></div>
+                    <a href="#1" class="dish_state" data-id="1">
+                        <img src="shop_img/shop_hold.svg" alt="hold" class="hold">
+                    </a>
+                </div>
+                <div class="dish">
+                    <img src="shop_img/shop_green_dish.svg" alt="green dish" class="dish-img">
+                    <div class="rectangle"></div>
+                    <a href="#2" class="dish_state" data-id="2">
+                        <img src="shop_img/shop_sauce.svg" alt="sauce" class="sauce">
+                        <h1 class="count">150</h1>
+                    </a>
+                </div>
+            </div>
+            <div class="dishs">
+                <div class="dish">
+                    <img src="shop_img/shop_blue_dish.svg" alt="blue dish" class="dish-img">
+                    <div class="rectangle"></div>
+                    <a href="#3" class="dish_state" data-id="3">
+                        <img src="shop_img/shop_sauce.svg" alt="sauce" class="sauce">
+                        <h1 class="count">200</h1>
+                    </a>
+                </div>
+                <div class="dish">
+                    <img src="shop_img/shop_yellow_dish.svg" alt="yellow dish" class="dish-img">
+                    <div class="rectangle"></div>
+                    <a href="#4" class="dish_state" data-id="4">
+                        <img src="shop_img/shop_sauce.svg" alt="sauce" class="sauce">
+                        <h1 class="count">300</h1>
+                    </a>
+                </div>
+            </div>
+            <div class="dishs">
+                <div class="dish">
+                    <img src="shop_img/shop_flower_dish.svg" alt="flower dish" class="dish-img flower-img">
+                    <div class="rectangle"></div>
+                    <a href="#5" class="dish_state" data-id="5">
+                        <img src="shop_img/shop_sauce.svg" alt="sauce" class="sauce">
+                        <h1 class="count">500</h1>
+                    </a>
+                </div>
+                <div class="dish">
+                    <img src="shop_img/shop_cat_dish.svg" alt="cat dish" class="dish-img">
+                    <div class="rectangle"></div>
+                    <a href="#6" class="dish_state" data-id="6">
+                        <img src="shop_img/shop_sauce.svg" alt="sauce" class="sauce">
+                        <h1 class="count">650</h1>
+                    </a>
+                </div>
+            </div>
+            <div class="dishs">
+                <div class="dish">
+                    <img src="shop_img/shop_space_dish.svg" alt="space dish" class="dish-img space-img">
+                    <div class="rectangle"></div>
+                    <a href="#7" class="dish_state" data-id="7">
+                        <img src="shop_img/shop_sauce.svg" alt="sauce" class="sauce">
+                        <h1 class="count">800</h1>
+                    </a>
+                </div>
+                <div class="dish">
+                    <img src="shop_img/shop_pan_dish.svg" alt="pan dish" class="dish-img pan-img">
+                    <div class="rectangle"></div>
+                    <a href="#8" class="dish_state" data-id="8">
+                        <img src="shop_img/shop_sauce.svg" alt="sauce" class="sauce">
+                        <h1 class="count">1000</h1>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let sauceTotal = localStorage.getItem('sauceTotal')
+            ? parseInt(localStorage.getItem('sauceTotal'))
+            : 3000;
+    
+        let dishStates = JSON.parse(localStorage.getItem('dishStates')) || {};
+    
+        // 페이지 로드 시 상태 복원
+        document.querySelectorAll('.dish_state').forEach(dish => {
+            const dishId = dish.getAttribute('data-id');
+            const state = dishStates[dishId];
+    
+            const currentImage = dish.querySelector('img');
+            if (state === 'check') {
+                currentImage.src = 'shop_img/shop_check.svg'; // 체크 이미지로 설정
+                currentImage.className = "check";
+                dish.querySelector('.count').innerText = '0'; // 카운트 0으로 설정
+                dish.querySelector('.count').style.display = 'none'; // 카운트 숨김
+            } else if (state === 'hold') {
+                currentImage.src = 'shop_img/shop_hold.svg'; // 홀드 이미지로 설정
+                currentImage.className = "hold";
+            }
+        });
+    
+        document.querySelectorAll('.dish_state').forEach(dish => {
+            dish.addEventListener('click', (event) => {
+                const countElement = dish.querySelector('.count');
+                let count = parseInt(countElement ? countElement.innerText : 0);
+                const checkImageSrc = 'shop_img/shop_check.svg'; // check 이미지 경로
+                const holdImageSrc = 'shop_img/shop_hold.svg'; // hold 이미지 경로
+                const sauceImageSrc = 'shop_img/shop_sauce.svg'; // sauce 이미지 경로
+                const currentImage = dish.querySelector('img');
+    
+                if (sauceTotal >= count) {
+                    if (currentImage.src.endsWith('shop_check.svg')) {
+                        alert("이미 check 상태입니다."); // 이미 check 이미지인 경우 알림
+                    } else {
+                        sauceTotal -= count;
+                        localStorage.setItem('sauceTotal', sauceTotal);
+    
+                        // 모든 dish의 이미지를 hold 이미지로 변경 (sauce 제외)
+                        document.querySelectorAll('.dish_state img').forEach(img => {
+                            if (!img.src.endsWith('shop_sauce.svg')) {
+                                img.src = holdImageSrc;
+                                img.className = "hold";
+                            }
+                        });
+    
+                        // 현재 이미지를 check 이미지로 변경
+                        currentImage.src = checkImageSrc;
+                        currentImage .className = "check";
+    
+                        // count를 0으로 변경하고 숨김
+                        countElement.innerText = '0';
+                        countElement.style.display = 'none'; // count 요소 숨기기
+    
+                        // 상태를 localStorage에 저장
+                        Object.keys(dishStates).forEach(function(key) {
+                            dishStates[key] = "hold";
+                        });
+                        dishStates[dish.getAttribute('data-id')] = 'check';
+                        localStorage.setItem('dishStates', JSON.stringify(dishStates));
+                        localStorage.setItem('dish',dish.getAttribute('data-id'));
+                    }
+                } else {
+                    alert("Not enough sauce left!");
+                }
+                
+            });
+            
+        });
+    </script>
+    
+</body>
+
+</html>
