@@ -1,0 +1,28 @@
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    position: absolute;
+    width: 375px;
+    height: 812px;
+    background-color: #FCA600;
+    position: relative;
+    overflow: hidden;
+}
+
+.header img {
+    position: absolute;
+    width: 100%;
+    margin-top: 4px;
+}
+
+.nugget-text {
+    margin-top: 330px;
+    margin-left: 62px;
+}
