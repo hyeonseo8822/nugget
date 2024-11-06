@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nugget</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="common_img/header.svg" alt="Header">
+        </div>
+
+        <div class="bottom-bar">
+            <div class="icons">
+                <a href="dectionary.html">
+                    <img src="common_img/dectionaryicon.svg" alt="Dictionary Icon" class="dectionary-icon">
+                </a>
+                <a href="list.html">
+                    <img src="common_img/listicon.svg" alt="List Icon" class="list-icon">
+                </a>
+                <a href="main.html">
+                    <img src="common_img/mainicon.svg" alt="Main Icon" class="main-icon">
+                </a>
+                <a href="shop.html">
+                    <img src="common_img/shopicon.svg" alt="Shop Icon" class="shop-icon">
+                </a>
+                <a href="">
+                    <img src="common_img/mypageicon.svg" alt="My Page Icon" class="mypage-icon">
+                </a>
+            </div>
+            <div class="hide">
+                <img src="main_img/mainicon_full.svg" alt="Main Full Icon" class="main_full-icon">
+            </div>
+        </div>
+
+
+        <div class="main-content">
+            <img src="common_img/nugget_text.svg" alt="Nugget Text" class="nugget-text">
+            <img src="main_img/main_talk.svg" alt="Main Talk" class="main-talk">
+            <p class="main-hi">안녕하세요!</p>
+            <img id="plate" src="main_img/main_plate.png" alt="Main Plate" class="main-plate">
+            <img src="main_img/main_nugget.svg" alt="Nugget" class="nugget">
+            <div class="button">
+                <a href="">
+                    <img src="main_img/main_quiz.svg" alt="Main Quiz" class="main-quiz">
+                </a>
+                <a href="">
+                    <img src="main_img/main_start.svg" alt="Main Start" class="main-start">
+                </a>
+            </div>
+
+            <img src="main_img/main_state.svg" alt="Main State" class="main-state">
+            <p class="main-level">LV.1</p>
+            <p class="main-name">반죽이</p>
+            <p class="main-xp-text">40/100</p>
+            <img src="main_img/main_xp.svg" alt="Main XP" class="main-xp">
+            <img src="main_img/main_sauce.svg" alt="Main Sauce" class="main-sauce">
+            <p class="main-sauce-count"></p>
+        </div>
+    </div>
+    <script>
+        let sauceTotal = localStorage.getItem('sauceTotal') 
+            ? parseInt(localStorage.getItem('sauceTotal')) 
+            : 3000;
+    
+        let nnn = {
+            "0" : "main_img/main_plate.png",
+            "1" : "shop_img/shop_white_dish.svg",
+            "2" : "shop_img/shop_green_dish.svg",
+            "3" : "shop_img/shop_blue_dish.svg",
+            "4" : "shop_img/shop_yellow_dish.svg",
+            "5" : "shop_img/shop_flower_dish.svg",
+            "6" : "shop_img/shop_cat_dish.svg",
+            "7" : "shop_img/shop_space_dish.svg",
+            "8" : "shop_img/shop_pan_dish.svg",
+        };
+    
+        let idx = localStorage.getItem("dish");
+        if (!idx) {
+            idx = "0";  
+        }
+    
+        const plateImage = document.querySelector('#plate');    
+        plateImage.src = nnn[idx];
+    
+        document.querySelector('.main-sauce-count').innerText = sauceTotal;
+    </script>
+    
+    
+</body>
+
+</html>
